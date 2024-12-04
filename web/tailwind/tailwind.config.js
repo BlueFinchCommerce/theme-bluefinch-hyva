@@ -22,7 +22,7 @@ module.exports = hyvaModules.mergeTailwindConfig({
 
       },
       fontFamily: {
-        sans: ["Segoe UI", "Helvetica Neue", "Arial", "sans-serif"]
+        sans: ['var(--font-family)']
       },
       colors: {
         primary: {
@@ -63,18 +63,22 @@ module.exports = hyvaModules.mergeTailwindConfig({
       backgroundColor: {
         primary: {
           lighter: colors.blue['600'],
-          "DEFAULT": colors.blue['700'],
+          "DEFAULT": 'var(--theme__color__primary)',
           darker: colors.blue['800']
         },
         secondary: {
           lighter: colors.blue['100'],
-          "DEFAULT": colors.blue['200'],
+          "DEFAULT": 'var(--theme__color__secondary)',
           darker: colors.blue['300']
         },
         container: {
           lighter: '#ffffff',
-          "DEFAULT": '#fafafa',
+          "DEFAULT": 'var(--body-color)',
           darker: '#f5f5f5'
+        },
+        footer: {
+            "DEFAULT": 'var(--footer-background-color)',
+            darker: 'var(--footer-bottom-background-color)'
         }
       },
       borderColor: {
@@ -127,9 +131,9 @@ module.exports = hyvaModules.mergeTailwindConfig({
     '../../*/layout/*.xml',
     '../../*/page_layout/override/base/*.xml',
     // parent theme in Vendor (if this is a child-theme)
-    //'../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.phtml',
-    //'../../../../../../../vendor/hyva-themes/magento2-default-theme/*/layout/*.xml',
-    //'../../../../../../../vendor/hyva-themes/magento2-default-theme/*/page_layout/override/base/*.xml',
+    '../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.phtml',
+    '../../../../../../../vendor/hyva-themes/magento2-default-theme/*/layout/*.xml',
+    '../../../../../../../vendor/hyva-themes/magento2-default-theme/*/page_layout/override/base/*.xml',
     // app/code phtml files (if need tailwind classes from app/code modules)
     //'../../../../../../../app/code/**/*.phtml',
   ]
