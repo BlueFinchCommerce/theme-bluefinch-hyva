@@ -1,2 +1,1 @@
-# theme-frontend-hyva-exodus
-Hyva Exodus Theme
+# theme-frontend-exodus
