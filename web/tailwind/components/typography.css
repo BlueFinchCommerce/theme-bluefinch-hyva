@@ -11,5 +11,5 @@ html {
 }
 
 body {
-    @apply text-black leading-normal text-base tracking-normal;
+    @apply leading-normal text-base tracking-normal text-primary;
 }

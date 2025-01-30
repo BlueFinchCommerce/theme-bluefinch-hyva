@@ -3,7 +3,7 @@ body {
 }
 
 #cart-drawer {
-    @apply text-black;
+    @apply text-primary;
 }
 
 [x-cloak] {

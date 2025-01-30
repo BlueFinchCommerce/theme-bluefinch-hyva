@@ -1,1 +1,1 @@
-# theme-frontend-exodus
+# Blue Finch
