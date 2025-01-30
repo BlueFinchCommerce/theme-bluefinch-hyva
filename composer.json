@@ -1,5 +1,5 @@
 {
-    "name": "bluefinch/hyva",
+    "name": "bluefinch/theme-bluefinch-hyva",
     "description": "N/A",
     "require": {
         "php": "~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
