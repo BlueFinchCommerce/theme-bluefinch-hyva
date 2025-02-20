@@ -27,15 +27,15 @@
     }
 
     .btn-primary {
-        @apply bg-primary text-white shadow-md;
+        @apply bg-primary text-theme shadow-md;
 
         &:hover {
-            @apply bg-primary-lighter text-white shadow-lg;
+            @apply bg-primary-lighter text-theme shadow-lg;
         }
     }
 
     .btn-secondary {
-        @apply bg-white border-2 border-primary-lighter text-black shadow-md;
+        @apply bg-primary text-theme shadow-md;
 
         &:hover {
             @apply bg-white border-primary-darker shadow-lg;

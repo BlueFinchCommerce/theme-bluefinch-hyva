@@ -81,6 +81,11 @@ module.exports = hyvaModules.mergeTailwindConfig({
                   "DEFAULT": 'var(--tertiary-color, ' + colors.gray['600'] + ')',
                   darker: 'var(--tertiary-color, ' + colors.gray['800'] + ')'
               },
+              theme: {
+                  lighter: "var(--tertiary-color, " + colors.blue['100'] + ")",
+                  "DEFAULT":"var(--tertiary-color, " + colors.blue['200'] + ")",
+                  darker: "var(--tertiary-color, " + colors.blue['300'] + ")"
+              },
           },
           backgroundColor: {
               primary: {

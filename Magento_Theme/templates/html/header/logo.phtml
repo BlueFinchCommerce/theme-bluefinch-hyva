@@ -1,0 +1,84 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Magento\Framework\Escaper;
+use Magento\Theme\Block\Html\Header\Logo;
+use Hyva\Theme\ViewModel\Logo\LogoSizeResolver;
+
+/** @var Logo $block */
+/** @var Escaper $escaper */
+/** @var ViewModelRegistry $viewModels */
+/** @var LogoSizeResolver $logoSizeResolver */
+
+$viewModel = $block->getViewModel();
+$storeName = $block->getThemeName();
+
+$logoSizeResolver = $viewModels->require(LogoSizeResolver::class);
+$logoWidth = $logoSizeResolver && $logoSizeResolver->getWidth()
+    ? $logoSizeResolver->getWidth()
+    : $block->getLogoWidth();
+$logoHeight = $logoSizeResolver && $logoSizeResolver->getHeight()
+    ? $logoSizeResolver->getHeight()
+    : $block->getLogoHeight();
+
+/** @var \Hyva\Theme\ViewModel\Logo\LogoPathResolver $logoPathResolver */
+$logoPathResolver = $block->getData('logoPathResolver');
+$logoSrc = $logoPathResolver && method_exists($logoPathResolver, 'getLogoSrc')
+    ? $logoPathResolver->getLogoSrc($block->getData('logo_file'))
+    : $block->getLogoSrc();
+
+$customLogoUrl = $viewModel->getStoreConfig('bluefinch_build/general/logo');
+$customMobileLogoUrl = $viewModel->getStoreConfig('bluefinch_build/general/mobile_logo');
+
+$imgSrc = $customLogoUrl ? $block->getUrl() .'media/' . $customLogoUrl : $logoSrc;
+?>
+<div class="order-1 sm:order-2 lg:order-1 w-full pb-2 sm:w-auto sm:pb-0">
+    <a
+        class="flex items-center justify-center text-xl font-medium tracking-wide text-gray-800
+            no-underline hover:no-underline font-title hidden sm:block"
+        href="<?= $escaper->escapeUrl($block->getUrl('')) ?>"
+        aria-label="<?= $escaper->escapeHtmlAttr(__('Go to Home page')) ?>"
+    >
+        <img
+            class="max-w-[150px] max-h-[75px]"
+            src="<?= $escaper->escapeUrl($imgSrc) ?>"
+            alt="<?= $escaper->escapeHtmlAttr($block->getLogoAlt() ? $block->getLogoAlt() : __('Store logo')) ?>"
+            <?= $logoWidth && !$customLogoUrl
+                ? 'width="' . $escaper->escapeHtmlAttr($logoWidth) . '"'
+                : 'width="200"'
+            ?>
+            <?= $logoHeight && !$customLogoUrl
+                ? 'height="' . $escaper->escapeHtmlAttr($logoHeight) . '"'
+                : 'height="150"'
+            ?>
+        />
+        <?php if (!$logoSrc): ?>
+            <?= $escaper->escapeHtml($storeName) ?>
+        <?php endif; ?>
+    </a>
+    <?php if ($customMobileLogoUrl): ?>
+    <a
+        class="flex items-center justify-center text-xl font-medium tracking-wide text-gray-800
+            no-underline hover:no-underline font-title sm:hidden"
+        href="<?= $escaper->escapeUrl($block->getUrl('')) ?>"
+        aria-label="<?= $escaper->escapeHtmlAttr(__('Go to Home page')) ?>"
+    >
+        <img
+            class="max-w-[100px] max-h-[50px]"
+            src="<?= $escaper->escapeUrl($block->getUrl() .'media/' . $customMobileLogoUrl) ?>"
+            alt="<?= $escaper->escapeHtmlAttr($block->getLogoAlt() ? $block->getLogoAlt() : __('Store mobile logo')) ?>"
+        />
+        <?php if (!$logoSrc): ?>
+            <?= $escaper->escapeHtml($storeName) ?>
+        <?php endif; ?>
+    </a>
+    <?php endif; ?>
+</div>
