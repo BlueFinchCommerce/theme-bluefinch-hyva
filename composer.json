@@ -1,5 +1,5 @@
 {
-    "name": "bluefinch/theme-bluefinch-hyva",
+    "name": "bluefinchcommerce/theme-bluefinch-hyva",
     "description": "N/A",
     "require": {
         "php": "~8.1.0|~8.2.0|~8.3.0",
