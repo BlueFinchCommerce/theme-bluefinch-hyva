@@ -18,7 +18,6 @@ use Hyva\Theme\ViewModel\Logo\LogoSizeResolver;
 /** @var ViewModelRegistry $viewModels */
 /** @var LogoSizeResolver $logoSizeResolver */
 
-$viewModel = $block->getViewModel();
 $storeName = $block->getThemeName();
 
 $logoSizeResolver = $viewModels->require(LogoSizeResolver::class);
@@ -35,8 +34,8 @@ $logoSrc = $logoPathResolver && method_exists($logoPathResolver, 'getLogoSrc')
     ? $logoPathResolver->getLogoSrc($block->getData('logo_file'))
     : $block->getLogoSrc();
 
-$customLogoUrl = $viewModel->getStoreConfig('bluefinch_build/general/logo');
-$customMobileLogoUrl = $viewModel->getStoreConfig('bluefinch_build/general/mobile_logo');
+$customLogoUrl = $block->getStoreConfig('bluefinch_build/general/logo');
+$customMobileLogoUrl = $block->getStoreConfig('bluefinch_build/general/mobile_logo');
 
 $imgSrc = $customLogoUrl ? $block->getUrl() .'media/' . $customLogoUrl : $logoSrc;
 ?>
