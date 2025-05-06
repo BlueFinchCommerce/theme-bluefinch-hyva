@@ -39,7 +39,7 @@ $customLogoUrl = $viewModel ? $viewModel->getStoreConfig('bluefinch_build/genera
 $customMobileLogoUrl = $viewModel ? $viewModel->getStoreConfig('bluefinch_build/general/mobile_logo') : null;
 
 $desktopImgSrc = $customLogoUrl ? $block->getUrl() .'media/' . $customLogoUrl : $logoSrc;
-$mobileImgSrc = $customLogoUrl ? $block->getUrl() .'media/' . $customMobileLogoUrl : $logoSrc;
+$mobileImgSrc = $customMobileLogoUrl ? $block->getUrl() .'media/' . $customMobileLogoUrl : $logoSrc;
 ?>
 <div class="order-1 sm:order-2 lg:order-1 w-full pb-2 sm:w-auto sm:pb-0">
     <a
